@@ -1,0 +1,7 @@
+
+def hello_world():
+    print("Hello from GitHub!")
+    
+# 测试函数
+if __name__ == "__main__":
+    hello_world()
