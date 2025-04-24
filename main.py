@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
 
 # 读取数据
 df = pd.read_csv('AAPL.csv')
@@ -13,8 +14,11 @@ plt.ylabel('Closing Price')
 plt.legend()
 plt.grid(True)
 
-# 保存图片（可以修改文件名和格式）
-plt.savefig('AAPL_stock_trend.png', dpi=300, bbox_inches='tight')
+# 保存图片（统一为 result.png）
+plt.savefig('result.png', dpi=300, bbox_inches='tight')
 
-# 显示图形
-plt.show()
+# Debug 输出
+print("Image saved:", os.path.exists("result.png"))
+
+# 不再显示图像（避免阻塞）
+# plt.show() ← 注释掉这一行
