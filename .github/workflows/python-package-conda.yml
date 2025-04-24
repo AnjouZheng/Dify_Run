@@ -1,40 +1,34 @@
-name: Python Package using Conda
+name: Run Uploaded Python File with Conda
 
 on:
   push:
-    branches: [main]  # 可选保留
+    branches: [main]  # 可选
   repository_dispatch:
-    types: [train_model]  # 你可以自定义为任何名字，如 "auto_train"
+    types: [run_python_image]
 
 jobs:
-  build-linux:
+  run-script:
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 5
 
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
+    - name: Set up Miniconda
+      uses: conda-incubator/setup-miniconda@v3
       with:
-        python-version: '3.10'
+        auto-update-conda: true
+        python-version: 3.10
+        activate-environment: base
 
-    - name: Add conda to system path
-      run: |
-        echo $CONDA/bin >> $GITHUB_PATH
+    - name: Install dependencies from environment.yml
+      run: conda env update -n base -f environment.yml
 
-    - name: Install dependencies
+    - name: Run your script
       run: |
-        conda env update --file environment.yml --name base
+        python main.py
 
-    - name: Lint with flake8
-      run: |
-        conda install flake8
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-
-    - name: Test with pytest
-      run: |
-        conda install pytest
-        pytest
+    - name: Upload result image
+      uses: actions/upload-artifact@v4
+      with:
+        name: result-image
+        path: result.png  # 假设你的脚本输出为 result.png
