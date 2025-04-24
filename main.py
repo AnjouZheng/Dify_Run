@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Assuming the data file is named 'APPL.csv' and contains a 'Date' and 'Close' column for dates and closing prices
-df = pd.read_csv('APPL.csv')
+df = pd.read_csv('AAPL.csv')
 
 plt.figure(figsize=(14,7))
 plt.plot(df['Date'], df['Close'], label='APPL')
