@@ -1,4 +1,3 @@
-```python
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -13,4 +12,3 @@ plt.ylabel('Closing Price')
 plt.legend()
 plt.grid(True)
 plt.show()
-```
