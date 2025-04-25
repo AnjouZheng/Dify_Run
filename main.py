@@ -1,4 +1,3 @@
-```python
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split 
@@ -44,4 +43,3 @@ plt.figure(figsize=(10,6))
 plt.plot([pd.Timestamp.fromordinal(i[0]) for i in X_future], predicted_price, label='Predicted Price')
 plt.savefig('predicted_price.png', dpi=300)
 plt.close()
-```
