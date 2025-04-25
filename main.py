@@ -1,4 +1,3 @@
-```python
 import pandas as pd
 import matplotlib.pyplot as plt
 from statsmodels.tsa.arima_model import ARIMA
@@ -16,7 +15,8 @@ plt.title('Apple Stock Price')
 plt.xlabel('Date')
 plt.ylabel('Price')
 plt.legend()
-plt.show()
+plt.savefig('apple_stock_price_history.png')  # 保存历史价格图
+plt.close()  # 关闭图形，不显示
 
 # 预测接下来6个月
 model = ARIMA(data['Close'], order=(5,1,0))
@@ -36,5 +36,5 @@ plt.title('Apple Stock Price Prediction')
 plt.xlabel('Date')
 plt.ylabel('Price')
 plt.legend()
-plt.show()
-```
+plt.savefig('apple_stock_price_prediction.png')  # 保存预测图
+plt.close()  # 关闭图形，不显示
