@@ -4,7 +4,7 @@ from statsmodels.tsa.arima_model import ARIMA
 import datetime
 
 # 读取数据
-data = pd.read_csv('apple_stock_prices.csv')
+data = pd.read_csv('AAPL.csv')
 data['Date'] = pd.to_datetime(data['Date'])
 data = data.set_index('Date')
 
