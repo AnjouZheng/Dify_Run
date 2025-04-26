@@ -1,4 +1,3 @@
-```python
 import yfinance as yf
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
@@ -29,4 +28,3 @@ plt.grid(True, linestyle='--', linewidth=0.5)
 plt.tight_layout()
 plt.savefig('apple_stock_weekly_trend.png')
 plt.close()
-```
