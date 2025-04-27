@@ -1,18 +1,19 @@
-import yfinance as yf
+import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
-from datetime import datetime
 
-# Fetch Apple stock data
-ticker = 'AAPL'
-start_date = '2023-01-01'
-end_date = '2025-03-31'
-df = yf.download(ticker, start=start_date, end=end_date, interval='1wk')
+# 读取本地AAPL.csv文件
+file_path = 'AAPL.csv'
+df = pd.read_csv(file_path)
+
+# 确保日期列是datetime类型
+df['Date'] = pd.to_datetime(df['Date'])
+df.set_index('Date', inplace=True)
 
 # Create the plot
 plt.figure(figsize=(12, 6))
 plt.plot(df.index, df['Close'], marker='o')
-plt.title(f'{ticker} Weekly Closing Price')
+plt.title('AAPL Weekly Closing Price')
 plt.xlabel('Date')
 plt.ylabel('Price (USD)')
 
