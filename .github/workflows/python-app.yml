@@ -11,7 +11,6 @@ permissions:
 
 jobs:
   run-script:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -25,17 +24,21 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt || true  # 可选
-        pip install matplotlib  # 或其他你用到的绘图库
-        pip install pandas
-        pip install scikit-learn
+        pip install -r requirements.txt || true
+        pip install matplotlib pandas scikit-learn
 
     - name: Run your script
       run: |
-        python main.py  # 替换为你的脚本名称
+        python main.py
 
-    - name: Upload result image
+    - name: Upload all result files
       uses: actions/upload-artifact@v4
       with:
-        name: result-image
-        path: predicted_price.png  # 确保脚本输出图像名为 result.png
+        name: result-files
+        path: |
+          *.png
+          *.jpg
+          *.jpeg
+          *.pdf
+          *.csv
+          *.txt
