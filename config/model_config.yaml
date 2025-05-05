@@ -1,0 +1,43 @@
+model_config:
+  task: spam_classification
+  model_type: transformer
+  model_name: bert-base-uncased
+  
+  preprocessing:
+    text_cleaning: 
+      lowercase: true
+      remove_punctuation: true
+      remove_stopwords: true
+    tokenization:
+      max_length: 512
+      padding: true
+      truncation: true
+  
+  training:
+    epochs: 10
+    batch_size: 32
+    learning_rate: 2e-5
+    optimizer: adamw
+    loss_function: cross_entropy
+    metrics:
+      - accuracy
+      - precision
+      - recall
+      - f1_score
+  
+  evaluation:
+    validation_split: 0.2
+    test_split: 0.1
+  
+  inference:
+    threshold: 0.5
+    max_prediction_batch: 64
+  
+  hardware:
+    device: cuda
+    precision: float16
+  
+  mlops:
+    experiment_tracking: true
+    model_registry: true
+    version_control: true
