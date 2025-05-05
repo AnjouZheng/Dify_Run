@@ -1,20 +1,16 @@
-email,label
-buy cheap watches online now!,spam
-urgent: your account has been locked,spam
-hello, can we schedule a meeting?,ham
-congratulations! you've won a prize,spam
-team project update for next week,ham
-limited time offer - 90% off!,spam
-monthly team performance report,ham
-get rich quick with this investment,spam
-dinner invitation for friday,ham
-increase your followers instantly,spam
-quarterly sales analysis,ham
-click here to claim your reward,spam
-client meeting minutes,ham
-amazing weight loss supplement,spam
-technical documentation review,ham
-you've inherited millions!,spam
-software development progress report,ham
-free iphone - claim now!,spam
-project milestone update,ham
+Subject,Email,Category
+"Special Offer!","Congratulations! You've won a free iPhone. Click here to claim your prize now!",spam
+"Meeting Reminder","Hi team, just a quick reminder about our project meeting at 2 PM today.",ham
+"Urgent: Account Alert","Your bank account has been suspended. Verify immediately by clicking this link.",spam
+"New Product Launch","Introducing our latest software update with enhanced security features.",ham
+"Exclusive Discount","Limited time offer! 90% off all products. Don't miss out!",spam
+"Performance Review","Your annual performance review is scheduled for next week.",ham
+"Lottery Winnings","You are the lucky winner of $1,000,000! Claim now.",spam
+"Company Newsletter","Monthly newsletter with latest company updates and achievements.",ham
+"Get Rich Quick","Make $5000 per week working from home. No experience needed!",spam
+"Invoice #1234","Please find attached the invoice for services rendered this month.",ham
+"Free Viagra","Cheap medication, no prescription needed. Buy now!",spam
+"Job Interview Invitation","We would like to schedule an interview with you next Tuesday.",ham
+"Nigerian Prince Scam","I am a Nigerian prince who needs your help transferring $10 million.",spam
+"Training Program","Upcoming professional development workshop for employees.",ham
+"Virus Warning","Your computer is infected. Download this antivirus immediately.",spam
