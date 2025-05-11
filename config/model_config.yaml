@@ -1,0 +1,51 @@
+model_config.yaml
+
+model:
+  type: "lstm_transformer_ensemble"
+  input_features:
+    - price_history
+    - trading_volume
+    - market_indices
+    - sentiment_score
+    - technical_indicators
+
+  lstm_config:
+    hidden_units: 128
+    layers: 2
+    dropout_rate: 0.3
+    sequence_length: 30
+
+  transformer_config:
+    heads: 4
+    encoder_layers: 3
+    embedding_dim: 256
+    max_position_encoding: 100
+
+  training:
+    batch_size: 64
+    learning_rate: 0.0001
+    epochs: 100
+    early_stopping:
+      patience: 10
+      monitor: "val_loss"
+
+  hardware:
+    gpu_memory: 16
+    precision: "float16"
+    optimization: 
+      - gradient_accumulation
+      - mixed_precision
+
+  regularization:
+    l2_lambda: 0.001
+    weight_decay: 0.0005
+
+  performance_metrics:
+    - mean_absolute_error
+    - root_mean_squared_error
+    - directional_accuracy
+
+  prediction_horizon:
+    short_term: 1_day
+    medium_term: 5_days
+    long_term: 30_days
