@@ -1,0 +1,55 @@
+data_config.yaml
+
+stock_data:
+  source:
+    raw_files:
+      - stocks_raw.csv
+      - market_indices.csv
+    type: financial_timeseries
+
+preprocessing:
+  normalization:
+    method: min_max_scaling
+    feature_range: [0, 1]
+  
+  feature_selection:
+    techniques:
+      - correlation_filter
+      - pca_reduction
+    max_features: 20
+
+data_split:
+  train_ratio: 0.7
+  validation_ratio: 0.15
+  test_ratio: 0.15
+  shuffle: true
+  random_seed: 42
+
+augmentation:
+  timeseries:
+    window_size: 30
+    stride: 1
+    techniques:
+      - noise_injection
+      - time_warping
+
+hardware_config:
+  gpu:
+    model: NVIDIA_4060TI
+    memory: 16GB
+    precision: float16
+
+dataset_params:
+  lookback_days: 60
+  forecast_horizon: 7
+  target_column: close_price
+
+logging:
+  level: INFO
+  path: ./logs/data_preprocessing.log
+
+monitoring:
+  metrics:
+    - data_quality_score
+    - missing_value_percentage
+    - feature_distribution
