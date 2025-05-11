@@ -1,0 +1,57 @@
+train_config.yaml
+
+model:
+  type: "lstm_transformer_hybrid"
+  architecture:
+    lstm_layers: 2
+    transformer_layers: 2
+    embedding_dim: 128
+    hidden_dim: 256
+  dropout_rate: 0.3
+
+training:
+  epochs: 100
+  batch_size: 64
+  learning_rate: 0.0001
+  optimizer: "adam"
+  early_stopping:
+    patience: 10
+    min_delta: 0.001
+
+hardware:
+  device: "cuda"
+  precision: "float16"
+  max_memory_gb: 16
+
+data:
+  lookback_window: 30
+  forecast_horizon: 5
+  features:
+    - "open"
+    - "high"
+    - "low"
+    - "close"
+    - "volume"
+    - "rsi"
+    - "macd"
+    - "bollinger_bands"
+
+regularization:
+  l1_lambda: 0.0001
+  l2_lambda: 0.0001
+
+logging:
+  level: "info"
+  wandb:
+    enabled: true
+    project: "stock_prediction"
+
+validation:
+  split_ratio: 0.2
+  cross_validation:
+    folds: 5
+    shuffle: true
+
+augmentation:
+  noise_level: 0.05
+  time_warping: true
