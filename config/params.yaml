@@ -1,0 +1,62 @@
+model_training:
+  framework: "pytorch"
+  task_type: "binary_classification"
+  
+model_architecture:
+  name: "DistilBERT"
+  pretrained_model: "distilbert-base-uncased"
+  max_seq_length: 512
+  dropout_rate: 0.3
+
+training_params:
+  batch_size: 32
+  learning_rate: 2e-5
+  epochs: 10
+  warmup_ratio: 0.1
+  weight_decay: 0.01
+  gradient_accumulation_steps: 2
+  max_grad_norm: 1.0
+
+optimization:
+  mixed_precision: true
+  device: "cuda"
+  precision: "float16"
+  
+data_preprocessing:
+  tokenizer: "distilbert"
+  text_cleaning:
+    remove_special_chars: true
+    lowercase: true
+    remove_numbers: false
+  
+evaluation_metrics:
+  - "accuracy"
+  - "precision"
+  - "recall"
+  - "f1_score"
+  - "auc_roc"
+
+logging:
+  level: "INFO"
+  save_dir: "./logs"
+  wandb_project: "spam_classifier"
+
+hardware:
+  gpu_model: "NVIDIA RTX 4060 TI"
+  gpu_memory: 16
+  num_gpus: 1
+
+inference_config:
+  threshold: 0.5
+  batch_inference: true
+  max_batch_size: 64
+
+regularization:
+  early_stopping:
+    patience: 3
+    min_delta: 0.001
+  
+augmentation:
+  text_augment: 
+    - "synonym_replacement"
+    - "back_translation"
