@@ -1,0 +1,39 @@
+paths.yaml
+data:
+  raw_dir: "/workspace/spam_classifier/data/raw"
+  processed_dir: "/workspace/spam_classifier/data/processed"
+  splits_dir: "/workspace/spam_classifier/data/splits"
+
+datasets:
+  spam_assassin: 
+    source: "https://spamassassin.apache.org/publiccorpus/"
+    filename: "20030228_spam.tar.bz2"
+
+model:
+  checkpoint_dir: "/workspace/spam_classifier/models/trained_models"
+  pretrained_base: 
+    - "distilbert-base-uncased"
+    - "bert-base-uncased"
+
+inference:
+  device: "cuda"
+  max_seq_length: 512
+  batch_size: 32
+
+storage:
+  type: "local"
+  root_path: "/workspace/spam_classifier"
+
+logging:
+  level: "INFO"
+  path: "/workspace/spam_classifier/logs"
+
+api:
+  host: "0.0.0.0"
+  port: 8080
+  timeout: 30
+
+paths:
+  train_data: "/workspace/spam_classifier/data/splits/train.csv"
+  val_data: "/workspace/spam_classifier/data/splits/val.csv"
+  test_data: "/workspace/spam_classifier/data/splits/test.csv"
